@@ -40,9 +40,7 @@ public class Country implements Comparable<Country> {
         return countryCode;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
+    public void setCountryCode(String countryCode) { this.countryCode = countryCode; }
 
     public String getCountryName() {
         return countryName;

@@ -1,6 +1,6 @@
 package com.jcwitwicki.publicdata.controller;
 
-import com.jcwitwicki.publicdata.dao.CountryDao;
+import com.jcwitwicki.publicdata.dao.CountryDaoImpl;
 import com.jcwitwicki.publicdata.model.Country;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.*;
 
 public class DataController {
 
-    private static CountryDao dao = new CountryDao();
+    private CountryDaoImpl dao = new CountryDaoImpl();
     private Prompter prompter = new Prompter();
     private List<Country> countryIterable;
     private Country country;
@@ -17,7 +17,7 @@ public class DataController {
     private String countryName;
     private double internetUsersRate;
     private double adultLiteracyRate;
-    private boolean alreadyUsed;
+    private boolean isAlreadyUsed;
 
     public DataController() throws IOException {
     }
@@ -40,10 +40,10 @@ public class DataController {
         System.out.printf("%nAdding country %n");
         do {
             countryCode = prompter.insertCountryCode();
-        } while (alreadyUsed(countryCode));
+        } while (checkIfCountryAlreadyUsed(countryCode));
         do {
             countryName = prompter.insertCountryName();
-        } while (alreadyUsed(countryName));
+        } while (checkIfCountryAlreadyUsed(countryName));
         internetUsersRate = prompter.insertInternetUsersRate();
         adultLiteracyRate = prompter.insertAdultLiteracyRate();
 
@@ -52,14 +52,14 @@ public class DataController {
                 .withAdultLiteracyRate(adultLiteracyRate)
                 .build();
 
-        CountryDao.save(country);
+        dao.save(country);
         System.out.printf("%n%s added to database %n", country.getCountryName());
     }
 
     protected void deleteCountry() throws IOException {
         System.out.printf("%nDeleting country %n");
         country = selectCountry();
-        CountryDao.delete(country);
+        dao.delete(country);
         System.out.printf("%n%s deleted from database %n", country.getCountryName());
     }
 
@@ -69,7 +69,7 @@ public class DataController {
         country.setCountryName(prompter.insertCountryName());
         country.setInternetUsersRate(prompter.insertInternetUsersRate());
         country.setAdultLiteracyRate(prompter.insertAdultLiteracyRate());
-        CountryDao.update(country);
+        dao.update(country);
         System.out.printf("%n%s updated in database %n", country.getCountryName());
     }
 
@@ -78,7 +78,7 @@ public class DataController {
         Country countrySelected;
         do {
             String countryCode = prompter.insertCountryCode();
-            countrySelected= dao.fetchCountryByCode(countryCode);
+            countrySelected = dao.fetchCountryByCode(countryCode);
             if (countrySelected==null) {
                 System.out.printf("%nNo match%n");
             }
@@ -93,18 +93,18 @@ public class DataController {
             result = "--";
         }
         return result;
-    }
+}
 
-    private boolean alreadyUsed(String str) {
-        alreadyUsed = false;
+    private boolean checkIfCountryAlreadyUsed(String str) {
+        isAlreadyUsed = false;
         countryIterable = dao.fetchAllCountries();
         countryIterable.forEach(country -> {
             if (str.equals(country.getCountryCode()) || str.equals(country.getCountryName())) {
-                alreadyUsed = true;
+                isAlreadyUsed = true;
                 System.out.printf("%nAlready used%n");
             }
         });
-        return alreadyUsed;
+        return isAlreadyUsed;
     }
 
 }

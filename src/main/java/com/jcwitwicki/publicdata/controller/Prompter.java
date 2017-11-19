@@ -9,8 +9,9 @@ import java.util.Map;
 public class Prompter {
 
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private Map<Integer, String> menu = new LinkedHashMap<Integer, String>();
-    int choice;
+    private Map<Integer, String> menu = new LinkedHashMap<>();
+    private int choice;
+    private String prompt;
 
     public Prompter() throws IOException {
     }
@@ -99,18 +100,17 @@ public class Prompter {
     }
 
     protected double insertInternetUsersRate() throws IOException {
-        String prompt = "Please enter the internet users rate (between 0.00 and 100.00, please enter 0 for unknown value): ";
+        prompt = "Please enter the internet users rate (between 0.00 and 100.00, please enter 0 for unknown value): ";
         return insertRate(prompt);
     }
 
     protected double insertAdultLiteracyRate() throws IOException {
-        String prompt = "Please enter the adult literacy rate (between 0.00 and 100.00, please enter 0 for unknown value): ";
+        prompt = "Please enter the adult literacy rate (between 0.00 and 100.00, please enter 0 for unknown value): ";
         return insertRate (prompt);
     }
 
-    protected double insertRate( String prompt) throws IOException {
+    protected double insertRate(String prompt) throws IOException {
         double rate = -1.00;
-
         do {
             try {
                 System.out.printf("%n%s",prompt);
