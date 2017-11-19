@@ -12,5 +12,4 @@ public class Application {
         myPrompter.promptMenu();
 
     }
-
 }
