@@ -1,31 +1,25 @@
 package com.jcwitwicki.publicdata.controller;
 
-import com.jcwitwicki.publicdata.dao.CountryDao;
-import com.jcwitwicki.publicdata.model.Country;
+        import com.jcwitwicki.publicdata.dao.CountryDaoImpl;
+        import com.jcwitwicki.publicdata.model.Country;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+        import java.util.ArrayList;
+        import java.util.Comparator;
+        import java.util.List;
+        import java.util.NoSuchElementException;
+        import java.util.function.Function;
+        import java.util.stream.Collectors;
 
-/**
- * Created by Jean-Charles on 16-Nov-17.
- */
 public class ComputeController {
 
-    private Comparator<Country> comparator;
-//    private double averageRate;
-    private List<Country> countryIterable;
-    private static CountryDao dao = new CountryDao();
+    private static CountryDaoImpl dao = new CountryDaoImpl();
 
     public ComputeController() {}
 
     protected void viewStatistics() {
 
         System.out.printf("%nThose statistics only include countries which have data" +
-                " reported for both indicators%n");
+                " reported for both indicators:%n");
         try {
             System.out.printf("%nLowest Internet Users Rate : %.2f - %s%n",
                     lowestRateComputation(internetUsersRateComparator()).getInternetUsersRate(),
@@ -44,13 +38,13 @@ public class ComputeController {
             System.out.printf("Average Adult Literacy Rate : %.2f%n%n", averageRateComputation(getAdultLiteracyRateList()));
 
             System.out.printf("Correlation coefficient between Internet Users" +
-                              " and Adult Literacy: %.2f%n%n " ,correlationCoefficientComputation());
+                    " and Adult Literacy: %.2f%n%n " ,correlationCoefficientComputation());
 
 
             System.out.printf("Correlation Coefficient is used in statistics to measure" +
                     " the correlation between two sets of data. It has a value between" +
                     " +1 and −1, where 1 is total positive linear correlation," +
-                    " 0 is no linear correlation, and −1 is total negative linear correlation.");
+                    " 0 is no linear correlation, and −1 is total negative linear correlation.%n");
 
         } catch (NoSuchElementException nse) {
             System.out.printf("%nPlease enter data first");
@@ -58,25 +52,22 @@ public class ComputeController {
     }
 
     private Country lowestRateComputation(Comparator<Country> countryComparator) {
-        Country lowestRate = eligibleCountriesForStatistics().stream()
+        return eligibleCountriesForStatistics().stream()
                 .min(countryComparator)
                 .get();
-        return lowestRate;
     }
 
     private Country highestRateComputation(Comparator<Country> countryComparator) {
-        Country highestRate = eligibleCountriesForStatistics().stream()
+        return eligibleCountriesForStatistics().stream()
                 .max(countryComparator)
                 .get();
-        return highestRate;
     }
 
     private double averageRateComputation(List<Double> rateList) {
-        double averageRate = rateList.stream()
+        return rateList.stream()
                 .mapToDouble(a -> a)
                 .average()
                 .getAsDouble();
-        return averageRate;
     }
 
     private ArrayList<Double> getAdultLiteracyRateList() {
@@ -92,19 +83,17 @@ public class ComputeController {
     }
 
     private Comparator<Country> internetUsersRateComparator() {
-        comparator = Comparator.comparingDouble(Country::getInternetUsersRate);
-        return comparator;
+        return Comparator.comparingDouble(Country::getInternetUsersRate);
     }
 
     private Comparator<Country> adultLiteracyRateComparator() {
-        comparator = Comparator.comparingDouble(Country::getAdultLiteracyRate);
-        return comparator;
+        return Comparator.comparingDouble(Country::getAdultLiteracyRate);
     }
 
+//  all calculated statistics should only include countries that have data reported for both indicators
     private List<Country> eligibleCountriesForStatistics() {
-        countryIterable = dao.fetchAllCountries();
+        List<Country> countryIterable = dao.fetchAllCountries();
         List<Country> eligibleCountries = new ArrayList<>();
-
         countryIterable.forEach(country -> {
             if (country.getInternetUsersRate()!=0.00 && country.getAdultLiteracyRate()!=0.00) {
                 eligibleCountries.add(country);
@@ -129,28 +118,25 @@ public class ComputeController {
 
     */
 
-        private double correlationCoefficientComputation() {
-            int N = eligibleCountriesForStatistics().size();
-            double Ex = sumOfRates(getInternetUsersRateList());
-            double Ey = sumOfRates(getAdultLiteracyRateList());
-            double Exy = sumOfRates(listProductOfXandY(getInternetUsersRateList(),getAdultLiteracyRateList()));
-            double Ex2 = sumOfRates(listToSquare(getInternetUsersRateList()));
-            double Ey2 = sumOfRates(listToSquare(getAdultLiteracyRateList()));
+    private double correlationCoefficientComputation() {
+        int N = eligibleCountriesForStatistics().size();
+        double Ex = sumOfRates(getInternetUsersRateList());
+        double Ey = sumOfRates(getAdultLiteracyRateList());
+        double Exy = sumOfRates(listProductOfXandY(getInternetUsersRateList(),getAdultLiteracyRateList()));
+        double Ex2 = sumOfRates(listToSquare(getInternetUsersRateList()));
+        double Ey2 = sumOfRates(listToSquare(getAdultLiteracyRateList()));
 
-            double coefficient = ((N * Exy) - (Ex*Ey)) / Math.sqrt(((N * Ex2) - (Ex * Ex)) * ((N * Ey2) - (Ey * Ey)));
-            return coefficient;
-        }
+        double coefficient = ((N * Exy) - (Ex*Ey)) / Math.sqrt(((N * Ex2) - (Ex * Ex)) * ((N * Ey2) - (Ey * Ey)));
+        return coefficient;
+    }
 
+    private double sumOfRates(List<Double> rateList) {
+        return rateList.stream()
+                .mapToDouble(a -> a)
+                .sum();
+    }
 
-        private double sumOfRates(List<Double> rateList) {
-            double sum = rateList.stream()
-                    .mapToDouble(a -> a)
-                    .sum();
-
-            return sum;
-        }
-
-        private List<Double> listProductOfXandY(ArrayList<Double> rateList1, ArrayList<Double> rateList2) {
+    private List<Double> listProductOfXandY(ArrayList<Double> rateList1, ArrayList<Double> rateList2) {
         List<Double> list = new ArrayList<>();
         for(int i=0;i<rateList1.size();i++) {
             list.add(rateList1.get(i) * rateList2.get(i));
@@ -158,13 +144,10 @@ public class ComputeController {
         return list;
     }
 
-        private List<Double> listToSquare(ArrayList<Double> rateList) {
-            Function<Double, Double> square = x -> x * x;
-            List<Double> squaredList = rateList.stream()
-                                .map(square)
-                                .collect(Collectors.toList());
-
-            return squaredList;
+    private List<Double> listToSquare(ArrayList<Double> rateList) {
+        Function<Double, Double> square = x -> x * x;
+        return  rateList.stream()
+                .map(square)
+                .collect(Collectors.toList());
     }
-
-    }
+}
