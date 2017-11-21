@@ -232,7 +232,7 @@
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="javadoc" />
               </ExternalTaskPojo>
-              <ExternalTaskPojo>
+              <ExternalTaskPojo> 
                 <option name="description" value="Assembles a jar archive containing the main classes." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="jar" />
