@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0daf814b-cf4f-480c-a488-c7ecb8c52827" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/worldbank.mv.db" afterPath="$PROJECT_DIR$/data/worldbank.mv.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/worldbank.trace.db" afterPath="$PROJECT_DIR$/data/worldbank.trace.db" />
-    </list>
+    <list default="true" id="0daf814b-cf4f-480c-a488-c7ecb8c52827" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
