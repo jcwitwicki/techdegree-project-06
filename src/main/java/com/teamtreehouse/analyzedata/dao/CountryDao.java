@@ -1,6 +1,6 @@
-package com.jcwitwicki.publicdata.dao;
+package com.teamtreehouse.analyzedata.dao;
 
-import com.jcwitwicki.publicdata.model.Country;
+import com.teamtreehouse.analyzedata.model.Country;
 
 import java.util.List;
 
