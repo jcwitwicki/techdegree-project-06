@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) throws IOException {
 
         Prompter myPrompter = new Prompter();
-        myPrompter.promptMenu(); 
+        myPrompter.promptMenu();
 
     }
 }
