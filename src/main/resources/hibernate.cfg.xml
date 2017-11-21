@@ -13,7 +13,7 @@
         <!-- Show the queries prepared by Hibernate -->
           <property name="show_sql">false</property>
 
-         <!-- Names the annotated publicdata classes -->
-        <mapping class="com.jcwitwicki.publicdata.model.Country" />
+         <!-- Names the annotated analyzedata classes -->
+        <mapping class="com.teamtreehouse.analyzedata.model.Country" />
     </session-factory>
 </hibernate-configuration>
