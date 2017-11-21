@@ -1,6 +1,6 @@
-package com.jcwitwicki.publicdata;
+package com.teamtreehouse.analyzedata;
 
-import com.jcwitwicki.publicdata.controller.Prompter;
+import com.teamtreehouse.analyzedata.controller.Prompter;
 
 import java.io.IOException;
 
