@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0daf814b-cf4f-480c-a488-c7ecb8c52827" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/Application.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/controller/ComputeController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/controller/DataController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/controller/Prompter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/dao/CountryDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/dao/CountryDaoImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/model/Country$CountryBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/com/jcwitwicki/publicdata/model/Country.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/Application.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/Application.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/controller/ComputeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/controller/ComputeController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/controller/DataController.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/controller/DataController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/controller/Prompter.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/controller/Prompter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/dao/CountryDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/dao/CountryDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/dao/CountryDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/dao/CountryDaoImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jcwitwicki/publicdata/model/Country.java" afterPath="$PROJECT_DIR$/src/main/java/com/teamtreehouse/analyzedata/model/Country.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/build/resources/main/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/worldbank.mv.db" afterPath="$PROJECT_DIR$/data/worldbank.mv.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/worldbank.trace.db" afterPath="$PROJECT_DIR$/data/worldbank.trace.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
