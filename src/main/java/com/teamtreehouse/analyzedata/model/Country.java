@@ -1,4 +1,4 @@
-package com.jcwitwicki.publicdata.model;
+package com.teamtreehouse.analyzedata.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
