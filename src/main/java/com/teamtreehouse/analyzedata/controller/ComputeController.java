@@ -1,7 +1,7 @@
-package com.jcwitwicki.publicdata.controller;
+package com.teamtreehouse.analyzedata.controller;
 
-        import com.jcwitwicki.publicdata.dao.CountryDaoImpl;
-        import com.jcwitwicki.publicdata.model.Country;
+        import com.teamtreehouse.analyzedata.dao.CountryDaoImpl;
+        import com.teamtreehouse.analyzedata.model.Country;
 
         import java.util.ArrayList;
         import java.util.Comparator;

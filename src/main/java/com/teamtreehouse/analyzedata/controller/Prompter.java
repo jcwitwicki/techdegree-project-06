@@ -1,4 +1,4 @@
-package com.jcwitwicki.publicdata.controller;
+package com.teamtreehouse.analyzedata.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
