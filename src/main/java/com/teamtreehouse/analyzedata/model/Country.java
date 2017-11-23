@@ -18,8 +18,7 @@ public class Country implements Comparable<Country> {
 
     @Column
     private double adultLiteracyRate;
-
-    // Default constructor for JPA
+    
     public Country(){}
 
     public Country(CountryBuilder builder) {
