@@ -18,7 +18,7 @@ public class Country implements Comparable<Country> {
 
     @Column
     private double adultLiteracyRate;
-    
+
     public Country(){}
 
     public Country(CountryBuilder builder) {
